@@ -1,0 +1,1 @@
+export { default as ErrorBoundary, useErrorHandler } from './boundary';
