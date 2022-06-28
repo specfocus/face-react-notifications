@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { CoreAdminContext } from '../core';
+import { BaseRootContext } from '../core';
 import { useNotify } from './useNotify';
 import { useNotificationContext } from './useNotificationContext';
 
@@ -33,14 +33,14 @@ const Notifications = () => {
 describe('useNotify', () => {
   it('should show a multiline notification message', () => {
     render(
-      <CoreAdminContext>
+      <BaseRootContext>
         <Notify
           type="info"
           message={`One Line\nTwo Lines\nThree Lines`}
           multiLine
         />
         <Notifications />
-      </CoreAdminContext>
+      </BaseRootContext>
     );
     screen.getByText(
       JSON.stringify([
@@ -57,14 +57,14 @@ describe('useNotify', () => {
 
   it('should show a notification message of type "warning"', () => {
     render(
-      <CoreAdminContext>
+      <BaseRootContext>
         <Notify
           type="warning"
           message="Notification message"
           autoHideDuration={4000}
         />
         <Notifications />
-      </CoreAdminContext>
+      </BaseRootContext>
     );
     screen.getByText(
       JSON.stringify([
@@ -81,10 +81,10 @@ describe('useNotify', () => {
 
   it('should show a notification when no type is assigned', () => {
     render(
-      <CoreAdminContext>
+      <BaseRootContext>
         <Notify message="Notification message" />
         <Notifications />
-      </CoreAdminContext>
+      </BaseRootContext>
     );
     screen.getByText(
       JSON.stringify([
